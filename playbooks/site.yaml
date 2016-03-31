@@ -1,6 +1,6 @@
 ---
 - name: ensure configs on my devices
-  hosts: "{{ hosts | default('all') }}"
+  hosts: "{{ devices | default('all') }}"
   gather_facts: no
   connection: local
 
