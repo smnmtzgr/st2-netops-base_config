@@ -1,0 +1,6 @@
+---
+name: chatops.ansible_ensure_base_config
+action_ref: st2-chatops-aliases.ansible_ensure_base_config
+description: Ensure base config on remote network devices
+formats:
+  - "ensure base-config on {{hosts}}"
