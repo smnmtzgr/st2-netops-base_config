@@ -1,0 +1,10 @@
+---
+- name: get current configured ntp servers
+  set_fact: _servers="{{ config | regex_findall('^ntp server (\S+)') }}"
+
+- name: configure ios ntp parameters
+  ios_template:
+    src: "{{ state }}/ios.j2"
+    config: "{{ config }}"
+    provider: "{{ provider }}"
+

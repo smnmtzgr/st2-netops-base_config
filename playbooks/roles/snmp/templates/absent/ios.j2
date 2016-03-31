@@ -1,0 +1,7 @@
+!
+no snmp-server contact
+no snmp-server location
+!
+{% for item in _communities %}
+no snmp-server community {{ item }}
+{% endfor %}

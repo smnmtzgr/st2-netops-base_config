@@ -1,0 +1,8 @@
+---
+- name: configure eos system settings
+  eos_template:
+    src: "{{ state }}/eos.j2"
+    config: "{{ config }}"
+    provider: "{{ provider }}"
+
+

@@ -1,0 +1,17 @@
+---
+- name: configure network device snmp settings
+  hosts: "{{ devices | default('all') }}"
+  gather_facts: no
+  connection: local
+
+  roles:
+    - role: snmp
+      state: present
+      snmp_contact: network operations
+      snmp_location: data center
+      snmp_communities:
+        - { name: public, access: RO }
+        - { name: private, access: RW }
+        - { name: operations, access: RW }
+
+

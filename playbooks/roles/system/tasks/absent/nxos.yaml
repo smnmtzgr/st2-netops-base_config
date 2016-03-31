@@ -1,0 +1,20 @@
+---
+- name: get configured ip name-servers
+  set_fact: _nameservers="{{ config | regex_findall('^ip name-server (\S+)') }}"
+
+- name: check if hostname is configured
+  set_fact: _hostname="{{ config | search('^hostname', multiline=True) }}"
+
+- name: check if ip domain-name is configured
+  set_fact: _domainname="{{ config | search('^ip domain-name', multiline=True) }}"
+
+- name: check if nxapi is configured
+  set_fact: _nxapi="{{ config | match('^feature nxapi') }}"
+
+- name: remove nxos system settings
+  nxos_template:
+    src: "{{ state }}/nxos.j2"
+    config: "{{ config }}"
+    provider: "{{ provider }}"
+
+

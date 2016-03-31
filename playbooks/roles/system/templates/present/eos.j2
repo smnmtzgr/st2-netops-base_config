@@ -1,0 +1,15 @@
+!
+hostname {{ inventory_hostname }}
+!
+ip domain lookup source-interface Management1
+ip domain-name {{ system_domain_name }}
+ip routing
+!
+management api http-commands
+   protocol http
+   no shutdown
+!
+{% for item in system_name_servers %}
+ip name-server vrf default {{ item }}
+{% endfor %}
+

@@ -1,0 +1,15 @@
+---
+- name: validate interface connection
+  eos_command:
+    commands:
+      - "show interfaces {{ item.key }}"
+      - "show lldp interface {{ item.key }}"
+    waitfor:
+      - "result[0].interfaces.{{ item.key }}.interfaceStatus eq connected"
+      - "result[1].lldpNeigbhors eq {{ item.value.connected_to }}"
+      - "result[1].lldpNeighbors eq {{ item.value.remote_port }}"
+    provider: "{{ provider }}"
+  with_dict: "{{ links }}"
+  when: item.value.validate_link
+
+

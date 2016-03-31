@@ -1,0 +1,13 @@
+!
+hostname {{ system_hostname }}
+!
+ip domain-lookup
+ip domain-name {{ system_domain_name }}
+!
+{% for item in system_name_servers %}
+ip name-server {{ item }} use-vrf management
+{% endfor %}
+!
+feature nxapi
+nxapi sandbox
+!

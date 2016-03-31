@@ -1,0 +1,7 @@
+---
+- name: write config 
+  include: "{{ item }}"
+  with_first_found:
+    - files: "{{ device_os }}.yaml"
+      skip: true
+      paths: handlers

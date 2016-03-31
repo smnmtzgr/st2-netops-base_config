@@ -1,0 +1,12 @@
+---
+- name: ensure configs on my devices
+  hosts: "{{ devices | default('all') }}"
+  gather_facts: no
+  connection: local
+
+  roles:
+    - role: network_facts
+    - role: ntp
+      state: present
+    - role: snmp
+      state: present

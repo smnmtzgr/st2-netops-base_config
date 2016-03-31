@@ -1,0 +1,5 @@
+snmp-server contact {{ snmp_contact }}
+snmp-server location {{ snmp_location }}
+{% for item in snmp_communities %}
+snmp-server community {{ item.name }} {{ item.access | default('RO') }}
+{% endfor %}

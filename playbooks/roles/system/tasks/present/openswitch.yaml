@@ -1,0 +1,10 @@
+---
+- name: configure openswitch system settings
+  ops_config:
+    lines:
+      - hostname {{ system_hostname }}
+      - domain-name {{ system_domain_name }}
+    config: "{{ config }}"
+    provider: "{{ provider }}"
+
+

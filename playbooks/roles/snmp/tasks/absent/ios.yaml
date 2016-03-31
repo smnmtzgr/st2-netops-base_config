@@ -1,0 +1,9 @@
+---
+- name: get current configured snmp communities
+  set_fact: _communities="{{ config | regex_findall('^snmp-server community (\S+)') }}"
+
+- name: remove ios snmp parameters
+  ios_template:
+    src: "{{ state }}/ios.j2"
+    config: "{{ config }}"
+    provider: "{{ provider }}"

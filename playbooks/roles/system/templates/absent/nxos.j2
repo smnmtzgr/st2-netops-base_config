@@ -1,0 +1,19 @@
+!
+{% if _hostname %}
+no hostname 
+{% endif %}
+!
+no ip domain-lookup
+!
+{% for item in _nameservers %}
+no ip name-server {{ item }} use-vrf management
+{% endfor %}
+!
+{% if _domainname %}
+no ip domain-name {{ domain_name }}
+{% endif %}
+!
+{% if _nxapi %}
+no feature nxapi
+{% endif %}
+!

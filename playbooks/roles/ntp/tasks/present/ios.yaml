@@ -1,0 +1,24 @@
+---
+- name: get current configured ntp servers
+  set_fact: _servers="{{ config | regex_findall('^ntp server (\S+)') }}"
+
+- name: get desired ntp communities
+  set_fact: _desired="{{ ntp_servers | list }}"
+
+- name: remove old ntp servers
+  ios_config:
+    lines:
+      - "no ntp server {{ item }}"
+    provider: "{{ provider }}"
+    force: yes
+  with_items: "{{ _servers | difference(_desired) }}"
+  notify:
+    - write config
+
+- name: configure ios ntp parameters
+  ios_template:
+    src: "{{ state }}/ios.j2"
+    config: "{{ config }}"
+    provider: "{{ provider }}"
+  notify:
+    - write config

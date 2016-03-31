@@ -1,0 +1,12 @@
+!
+hostname {{ system_hostname }}
+!
+ip domain lookup source-interface {{ system_source_interface }}
+ip domain name {{ system_domain_name }}
+!
+no ip http server
+no ip http secure-server
+!
+{% for item in system_name_servers %}
+ip name-server vrf Mgmt-intf {{ item }}
+{% endfor %}

@@ -1,0 +1,8 @@
+---
+- name: configure nxos system settings
+  nxos_template:
+    src: "{{ state }}/nxos.j2"
+    config: "{{ config }}"
+    provider: "{{ provider }}"
+
+

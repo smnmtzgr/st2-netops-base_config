@@ -1,0 +1,6 @@
+---
+- name: write running-config to startup-config of ios device
+  ios_command:
+    commands:
+      - write
+    provider: "{{ cli }}"

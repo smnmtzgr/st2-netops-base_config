@@ -1,0 +1,16 @@
+---
+- name: enable domain lookup
+  iosxr_config:
+    lines:
+      - no domain lookup disable
+    config: "{{ config }}"
+    provider: "{{ cli }}"
+  when: "{{ config | search('domain lookup disable', multiline=True) }}"
+
+- name: configure iosxr system settings
+  iosxr_template:
+    src: "{{ state }}/iosxr.j2"
+    config: "{{ config }}"
+    provider: "{{ provider }}"
+
+

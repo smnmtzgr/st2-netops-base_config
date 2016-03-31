@@ -1,0 +1,15 @@
+---
+- name: configure network device system services
+  hosts: "{{ devices | default('all') }}"
+  gather_facts: no
+  connection: local
+
+  roles:
+    - role: system
+      state: present
+      system_hostname: "{{ inventory_hostname }}"
+      system_domain_name: eng.ansible.com
+      system_source_interface: "{{ system.source_interface }}"
+      system_name_servers:
+        - 172.26.1.1
+

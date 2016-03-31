@@ -1,0 +1,28 @@
+---
+- name: collect output from ios device
+  ios_command:
+    commands:
+      - show version
+      - show interfaces
+      - show running-config
+    provider: "{{ cli }}"
+  register: output
+
+# common facts
+#
+
+- name: set hostname fact
+  set_fact: hostname="{{ output.stdout[2] | regex_search('^hostname (.+)$', '\\1') | first }}"
+
+- name: set interfaces fact
+  set_fact: interfaces="{{ output.stdout[1] | regex_findall('^[L|G|A|B|C|D||M|N|P|T|V]\\S+') }}"
+
+- name: set version fact
+  set_fact: version="{{ output.stdout[0] | regex_search('Version (\\S+),', '\\1') | first }}"
+
+- name: set config fact
+  set_fact: config="{{ output.stdout[2] }}"
+
+- name: set config_lines fact
+  set_fact: config_lines="{{ config.split('\n') }}"
+

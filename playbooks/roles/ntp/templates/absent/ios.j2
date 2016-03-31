@@ -1,0 +1,7 @@
+!
+no ntp source {{ ntp_source_interface }}
+!
+{% for item in _servers %}
+no ntp server {{ item }}
+{% endfor %}
+!

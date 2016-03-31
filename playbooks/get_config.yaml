@@ -1,0 +1,13 @@
+---
+- name: manage network device interfaces
+  hosts: "{{ devices | default('all') }}"
+  gather_facts: no
+  connection: local
+
+  roles:
+    - network_facts
+
+  tasks:
+    - debug: var=config_lines
+
+

@@ -1,0 +1,8 @@
+---
+- name: configure cumulus hostname
+  hostname:
+    name: "{{ system_hostname }}"
+  delegate_to: "{{ inventory_hostname }}"
+  become: yes
+
+

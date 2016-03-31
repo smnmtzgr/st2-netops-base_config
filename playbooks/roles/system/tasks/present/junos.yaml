@@ -1,0 +1,10 @@
+---
+- name: configure junos system parameters
+  junos_config:
+    lines:
+      - set system host-name {{ inventory_hostname }}
+    config: "{{ config }}"
+    provider: "{{ cli }}"
+
+
+
