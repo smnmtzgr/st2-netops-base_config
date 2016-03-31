@@ -3,4 +3,4 @@ name: netops.ansible_ensure_base_config
 action_ref: st2-pack-ansible-advanced.ensure_base_config
 description: Ensure base config on remote network devices
 formats:
-  - "ensure base-config on {{hosts}}"
+  - "ensure base-config on {{devices}}"
