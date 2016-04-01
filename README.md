@@ -1,7 +1,7 @@
 [![StackStorm](https://github.com/stackstorm/st2/raw/master/stackstorm_logo.png)](http://www.stackstorm.com)
 
 # st2-netops-base_config Integration Pack
-With this pack you get the possibility to ensure a base_config on Cisco IOS-Switches. This works with the defined aliases and the called ansible-playbook **site.yml** behind the scene. The pack could be extended to support different vendors, os-types and more roles. At the moment the config for ntp and snmp gets ensured. The ansible playbooks and roles are based on the [https://github.com/privateip/Ansible-Webinar-Mar2016 webinar content] of **privateip**.
+With this pack you get the possibility to ensure a base_config on Cisco IOS-Switches. This works with the defined aliases and the called ansible-playbook **site.yml** behind the scene. The pack could be extended to support different vendors, os-types and more roles. At the moment the config for ntp and snmp gets ensured. The ansible playbooks and roles are based on the [webinar content][1] of **privateip**.
 
 ## Configuration
 
@@ -39,3 +39,4 @@ This pack adds:
 ```sh
 $ st2 run packs.install packs=st2-netops-base_config repo_url=https://github.com/smnmtzgr/st2-netops-base_config
 ```
+[1]: https://github.com/privateip/Ansible-Webinar-Mar2016
