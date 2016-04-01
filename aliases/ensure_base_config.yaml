@@ -3,4 +3,4 @@ name: netops.ensure_base_config
 action_ref: st2-netops-base_config.ensure_base_config
 description: Ensure base config on remote network devices
 formats:
-  - "ensure base-config on {{devices}}"
+  - "netops ensure base-config on {{devices}}"
