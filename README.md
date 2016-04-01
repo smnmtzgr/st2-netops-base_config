@@ -5,7 +5,7 @@ With this pack you get the possibility to ensure a base_config on Cisco IOS-Swit
 
 ## Configuration
 
-To get Ansible working with the IOS-modules you have to install it on the StackStorm-server. The **devel**-branch includes all needed modules.
+To get Ansible work with the IOS-modules you have to install it on the StackStorm-server. The **devel**-branch includes all needed modules.
 ```sh
 $ git clone http://github.com/ansible/ansible.git
 $ cd ansible
